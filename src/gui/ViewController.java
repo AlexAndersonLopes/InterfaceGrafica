@@ -1,14 +1,20 @@
 package gui;
 
+import gui.util.Constraints;
+import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
-public class ViewController {
+public class ViewController implements Initializable{
 
+    public static final DecimalFormat df = new DecimalFormat("#.##"); 
+    
     @FXML
     private Button calcular;
     @FXML
@@ -27,7 +33,7 @@ public class ViewController {
     private CheckBox divisao;
 
     @FXML
-    public void onButtonAction(ActionEvent evento) {
+    public void onButtonAction(ActionEvent evento) {        
         int num1 = Integer.parseInt(numero1.getText());
         int num2 = Integer.parseInt(numero2.getText());
         double res = 0;
@@ -45,7 +51,8 @@ public class ViewController {
         }
         mostrarResultado(res);
         limparTela();
-    }
+        }    
+ 
 
     @FXML
     public boolean onAdicao() {
@@ -76,14 +83,25 @@ public class ViewController {
         divisao.setSelected(false);
     }
 
+    //MOSTRAR O RESULTADO INT ou DOUBLE
     public void mostrarResultado(double res) {
         if (res % 1 == 0) {
             resultado.setText(String.valueOf((int) res));
-        } else {
-            DecimalFormat df = new DecimalFormat("#.##"); 
-            String formattedRes = df.format(res); 
-            resultado.setText(formattedRes);
+        } else {           
+            String dfRes = df.format(res); 
+            resultado.setText(dfRes);
         }
+    }
+
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        //LIMITAR PARA ACEITAR APENAS NUMEROS INTEIROS
+        Constraints.setTextFieldInteger(numero1);
+        Constraints.setTextFieldInteger(numero2);
+        //LIMITAR PARA ACEITAR ATÉ 12 CARACTERES
+        Constraints.setTextFieldMaxLength(numero1, 12);
+        Constraints.setTextFieldMaxLength(numero2, 12);
     }
 
 }
