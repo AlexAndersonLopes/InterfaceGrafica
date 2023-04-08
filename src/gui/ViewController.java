@@ -1,5 +1,6 @@
 package gui;
 
+import java.text.DecimalFormat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -79,10 +80,10 @@ public class ViewController {
         if (res % 1 == 0) {
             resultado.setText(String.valueOf((int) res));
         } else {
-            resultado.setText(String.valueOf(res));
+            DecimalFormat df = new DecimalFormat("#.##"); 
+            String formattedRes = df.format(res); 
+            resultado.setText(formattedRes);
         }
     }
 
-    
-    
 }
