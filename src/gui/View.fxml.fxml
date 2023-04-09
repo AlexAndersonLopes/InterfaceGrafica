@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
@@ -19,10 +20,13 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <Label layoutX="108.0" layoutY="24.0" text="Aprendendo a usar Interface Grafica" textAlignment="CENTER">
+      <Label layoutX="108.0" layoutY="24.0" text="Aprendendo a usar Interface Grafica" textAlignment="CENTER" textFill="#270299">
          <font>
-            <Font size="23.0" />
+            <Font name="Comic Sans MS Bold" size="23.0" />
          </font>
+         <padding>
+            <Insets left="5.0" top="5.0" />
+         </padding>
       </Label>
       <CheckBox fx:id="adicao" layoutX="27.0" layoutY="84.0" mnemonicParsing="false" onAction="#onAdicao" text="ADIÇÃO" />
       <CheckBox fx:id="subtracao" layoutX="147.0" layoutY="84.0" mnemonicParsing="false" onAction="#onSubtracao" text="SUBTRAÇÃO" />

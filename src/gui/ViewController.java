@@ -57,33 +57,32 @@ public class ViewController implements Initializable {
         limparTela();
     }
 
-    @FXML
-    public void onErroTesteAction(ActionEvent evento) {
-        Alerts.showAlert("ERRO", null, "Você é muito teimoso, "
-                + "eu falei para não apertar esse botão!!!", Alert.AlertType.ERROR);
-    }
 
     @FXML
     public boolean onAdicao() {
         desmarcarOutrosCheckboxes(adicao);
+        resultado.clear();
         return adicao.isSelected();
     }
 
     @FXML
     public boolean onSubtracao() {
         desmarcarOutrosCheckboxes(subtracao);
+        resultado.clear();
         return subtracao.isSelected();
     }
 
     @FXML
     public boolean onMultiplicacao() {
         desmarcarOutrosCheckboxes(multiplicacao);
+        resultado.clear();
         return multiplicacao.isSelected();
     }
 
     @FXML
     public boolean onDivisao() {
         desmarcarOutrosCheckboxes(divisao);
+        resultado.clear();
         return divisao.isSelected();
     }
 
@@ -114,6 +113,12 @@ public class ViewController implements Initializable {
             String dfRes = df.format(res);
             resultado.setText(dfRes);
         }
+    }
+    
+    @FXML
+    public void onErroTesteAction(ActionEvent evento) {
+        Alerts.showAlert("ERRO", null, "Você é muito teimoso, "
+                + "eu falei para não apertar esse botão!!!", Alert.AlertType.ERROR);
     }
 
     @Override
