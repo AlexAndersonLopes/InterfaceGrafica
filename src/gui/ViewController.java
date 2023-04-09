@@ -2,25 +2,42 @@ package gui;
 
 import gui.util.Alerts;
 import gui.util.Constraints;
+import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ViewController implements Initializable {
 
+    private CotacaoController cotacaoController;
+    private ImpostoController impostoController;
     public static final DecimalFormat df = new DecimalFormat("#.##");
 
+    @FXML
+    private MenuItem menuCotacao;
+    @FXML
+    private MenuItem menuImposto;
+    @FXML
+    private Button imposto;
     @FXML
     private Button erroTeste;
     @FXML
     private Button calcular;
+    @FXML
+    private Button cotacaoDolar;
     @FXML
     private TextField numero1;
     @FXML
@@ -56,7 +73,6 @@ public class ViewController implements Initializable {
         mostrarResultado(res);
         limparTela();
     }
-
 
     @FXML
     public boolean onAdicao() {
@@ -114,11 +130,31 @@ public class ViewController implements Initializable {
             resultado.setText(dfRes);
         }
     }
-    
+
     @FXML
     public void onErroTesteAction(ActionEvent evento) {
         Alerts.showAlert("ERRO", null, "Você é muito teimoso, "
                 + "eu falei para não apertar esse botão!!!", Alert.AlertType.ERROR);
+    }
+
+    @FXML
+    public synchronized void onCotacaoDolarAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Cotacao.fxml"));
+        Parent parent = loader.load();
+        CotacaoController cotacaoController = loader.getController();
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+    }
+
+    @FXML
+    public synchronized void onImpostoAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Imposto.fxml"));
+        Parent parent = loader.load();
+        ImpostoController impostoController = loader.getController();
+        Scene scene = new Scene(parent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
     }
 
     @Override
