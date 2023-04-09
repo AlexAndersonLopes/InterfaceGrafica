@@ -13,10 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
-public class ViewController implements Initializable{
+public class ViewController implements Initializable {
 
-    public static final DecimalFormat df = new DecimalFormat("#.##"); 
-    
+    public static final DecimalFormat df = new DecimalFormat("#.##");
+
     @FXML
     private Button erroTeste;
     @FXML
@@ -37,7 +37,7 @@ public class ViewController implements Initializable{
     private CheckBox divisao;
 
     @FXML
-    public void onButtonAction(ActionEvent evento) {        
+    public void onButtonAction(ActionEvent evento) {
         int num1 = Integer.parseInt(numero1.getText());
         int num2 = Integer.parseInt(numero2.getText());
         double res = 0;
@@ -55,32 +55,46 @@ public class ViewController implements Initializable{
         }
         mostrarResultado(res);
         limparTela();
-        }    
- 
+    }
 
     @FXML
-    public void onErroTesteAction(ActionEvent evento){
-        Alerts.showAlert("ERRO", null, "Você é muito teimoso, eu falei para não apertar esse botão!!!", Alert.AlertType.ERROR);
+    public void onErroTesteAction(ActionEvent evento) {
+        Alerts.showAlert("ERRO", null, "Você é muito teimoso, "
+                + "eu falei para não apertar esse botão!!!", Alert.AlertType.ERROR);
     }
-    
+
     @FXML
     public boolean onAdicao() {
+        desmarcarOutrosCheckboxes(adicao);
         return adicao.isSelected();
     }
 
     @FXML
     public boolean onSubtracao() {
+        desmarcarOutrosCheckboxes(subtracao);
         return subtracao.isSelected();
     }
 
     @FXML
     public boolean onMultiplicacao() {
+        desmarcarOutrosCheckboxes(multiplicacao);
         return multiplicacao.isSelected();
     }
 
     @FXML
     public boolean onDivisao() {
+        desmarcarOutrosCheckboxes(divisao);
         return divisao.isSelected();
+    }
+
+    //MARCAR APENAS 1 CHECKBOX AO MESMO TEMPO
+    public void desmarcarOutrosCheckboxes(CheckBox checkboxClicado) {
+        if (checkboxClicado.isSelected()) {
+            adicao.setSelected(checkboxClicado.equals(adicao));
+            subtracao.setSelected(checkboxClicado.equals(subtracao));
+            multiplicacao.setSelected(checkboxClicado.equals(multiplicacao));
+            divisao.setSelected(checkboxClicado.equals(divisao));
+        }
     }
 
     public void limparTela() {
@@ -96,13 +110,12 @@ public class ViewController implements Initializable{
     public void mostrarResultado(double res) {
         if (res % 1 == 0) {
             resultado.setText(String.valueOf((int) res));
-        } else {           
-            String dfRes = df.format(res); 
+        } else {
+            String dfRes = df.format(res);
             resultado.setText(dfRes);
         }
     }
 
-    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //LIMITAR PARA ACEITAR APENAS NUMEROS INTEIROS
