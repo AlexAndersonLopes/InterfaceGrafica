@@ -1,5 +1,6 @@
 package gui;
 
+import gui.util.Alerts;
 import gui.util.Constraints;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -7,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -15,6 +17,8 @@ public class ViewController implements Initializable{
 
     public static final DecimalFormat df = new DecimalFormat("#.##"); 
     
+    @FXML
+    private Button erroTeste;
     @FXML
     private Button calcular;
     @FXML
@@ -54,6 +58,11 @@ public class ViewController implements Initializable{
         }    
  
 
+    @FXML
+    public void onErroTesteAction(ActionEvent evento){
+        Alerts.showAlert("ERRO", null, "Você é muito teimoso, eu falei para não apertar esse botão!!!", Alert.AlertType.ERROR);
+    }
+    
     @FXML
     public boolean onAdicao() {
         return adicao.isSelected();

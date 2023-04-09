@@ -10,12 +10,15 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ViewController">
    <children>
       <Button fx:id="calcular" layoutX="263.0" layoutY="264.0" mnemonicParsing="false" onAction="#onButtonAction" text="Calcular" />
-      <TextField fx:id="numero1" layoutX="210.0" layoutY="154.0" onAction="#onButtonAction" />
-      <TextField fx:id="numero2" layoutX="210.0" layoutY="200.0" onAction="#onButtonAction" />
-      <TextField fx:id="resultado" layoutX="214.0" layoutY="326.0" onAction="#onButtonAction" />
+      <TextField fx:id="numero1" layoutX="210.0" layoutY="154.0" onAction="#onButtonAction" promptText="Digite o numero" />
+      <TextField fx:id="numero2" layoutX="210.0" layoutY="200.0" onAction="#onButtonAction" promptText="Digite o numero" />
+      <TextField fx:id="resultado" layoutX="210.0" layoutY="326.0" onAction="#onButtonAction" />
       <Label layoutX="129.0" layoutY="158.0" text="Numero 1" />
       <Label layoutX="129.0" layoutY="204.0" text="Numero 2" />
-      <Label layoutX="130.0" layoutY="330.0" text="Resultado" />
+      <Label layoutX="130.0" layoutY="330.0" text="Resultado">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
       <Label layoutX="108.0" layoutY="24.0" text="Aprendendo a usar Interface Grafica" textAlignment="CENTER">
          <font>
             <Font size="23.0" />
@@ -25,5 +28,6 @@
       <CheckBox fx:id="subtracao" layoutX="147.0" layoutY="84.0" mnemonicParsing="false" onAction="#onSubtracao" text="SUBTRAÇÃO" />
       <CheckBox fx:id="multiplicacao" layoutX="300.0" layoutY="84.0" mnemonicParsing="false" onAction="#onMultiplicacao" text="MULTIPLICAÇÃO" />
       <CheckBox fx:id="divisao" layoutX="474.0" layoutY="84.0" mnemonicParsing="false" onAction="#onDivisao" text="DIVISÃO" />
+      <Button fx:id="erroTeste" layoutX="462.0" layoutY="353.0" mnemonicParsing="false" onAction="#onErroTesteAction" text="Não Aperte Aqui" />
    </children>
 </AnchorPane>
