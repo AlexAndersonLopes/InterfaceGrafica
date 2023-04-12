@@ -28,30 +28,27 @@ public class CotacaoController implements Initializable{
     @FXML
     private Button calcular;
 
-    //private String cotacao;
 
     @FXML
     public void onCalcularAction() throws Exception {
         double cot = Double.valueOf(cotacaoDolarReal.getText());
         double qtd = Double.parseDouble(qtdDolar.getText());
-        
         double valorTotal = cot * qtd;
-        total.setText(String.valueOf((double) valorTotal));
-       
+        
+        total.setText(String.valueOf((double) valorTotal));      
     }
     
     @FXML
     private void onVoltarAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) voltar.getScene().getWindow();
-    stage.close();
-    
-    // Abre a janela anterior
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml.fxml"));
-    Parent root = loader.load();
-    Scene scene = new Scene(root);
-    stage.setScene(scene);
-    stage.setTitle("Minha aplicação");
-    stage.show();
+        stage.close();  
+        // Abre a janela anterior
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("View.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.setTitle("Minha aplicação");
+        stage.show();
     }
        
        

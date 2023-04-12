@@ -8,8 +8,15 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXTeste.jar" size="11907" download="eager" />
-    <jar href="lib\json-20210307.jar" size="69710" download="eager" />
+    <jar href="JavaFXTeste.jar" size="11932" download="eager" />
+    <jar href="lib\javafx-swt.jar" size="37129" download="eager" />
+    <jar href="lib\javafx.base.jar" size="745864" download="eager" />
+    <jar href="lib\javafx.controls.jar" size="2548777" download="eager" />
+    <jar href="lib\javafx.fxml.jar" size="130063" download="eager" />
+    <jar href="lib\javafx.graphics.jar" size="4254358" download="eager" />
+    <jar href="lib\javafx.media.jar" size="275934" download="eager" />
+    <jar href="lib\javafx.swing.jar" size="89632" download="eager" />
+    <jar href="lib\javafx.web.jar" size="721477" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="javafxteste.Main"  name="JavaFXTeste" />
   <update check="always"/>

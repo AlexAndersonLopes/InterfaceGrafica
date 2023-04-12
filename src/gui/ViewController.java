@@ -22,12 +22,12 @@ import javafx.stage.Stage;
 
 public class ViewController implements Initializable {
 
-    private CotacaoController cotacaoController;
-    private ImpostoController impostoController;
     public static final DecimalFormat df = new DecimalFormat("#.##");
 
     @FXML
     private MenuItem menuCotacao;
+    @FXML
+    private MenuItem menuErro;
     @FXML
     private MenuItem menuImposto;
     @FXML
@@ -138,23 +138,28 @@ public class ViewController implements Initializable {
     }
 
     @FXML
-    public synchronized void onCotacaoDolarAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Cotacao.fxml"));
-        Parent parent = loader.load();
-        CotacaoController cotacaoController = loader.getController();
-        Scene scene = new Scene(parent);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
+    public void teste(ActionEvent event) throws IOException {
+        abrirJanela("/gui/Cotacao.fxml", event);
     }
 
     @FXML
-    public synchronized void onImpostoAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Imposto.fxml"));
+    public void onCotacaoDolarAction(ActionEvent event) throws IOException {
+        abrirJanela("/gui/Cotacao.fxml", event);
+    }
+
+    @FXML
+    public void onImpostoAction(ActionEvent event) throws IOException {
+        abrirJanela("/gui/Imposto.fxml", event);
+    }
+
+    //METODO PARA ABRIR UMA NOVA JANELA RECEBENDO O ENDEREÇO E O EVENTO
+    public void abrirJanela(String fxmlFile, ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Parent parent = loader.load();
-        ImpostoController impostoController = loader.getController();
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.show();
     }
 
     @Override
